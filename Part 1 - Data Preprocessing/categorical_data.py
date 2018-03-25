@@ -3,6 +3,7 @@
 # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
+
 import pandas as pd
 
 # Importing the dataset
@@ -26,3 +27,5 @@ X = onehotencoder.fit_transform(X).toarray()
 # Encoding the Dependent Variable
 labelencoder_y = LabelEncoder()
 y = labelencoder_y.fit_transform(y)
+
+print(X)
