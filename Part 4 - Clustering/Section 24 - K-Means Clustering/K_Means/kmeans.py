@@ -26,17 +26,19 @@ y_train = sc_y.fit_transform(y_train)"""
 from sklearn.cluster import KMeans
 wcss = []
 for i in range(1, 11):
-    kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)
+    kmeans = KMeans(n_clusters = i, init = 'k-means++', n_init = 10, random_state = 42)
     kmeans.fit(X)
-    wcss.append(kmeans.inertia_)
+    wcss.append(kmeans.inertia_) #random sum of squares
 plt.plot(range(1, 11), wcss)
 plt.title('The Elbow Method')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
 
+# we found elbow at 5 here
+   
 # Fitting K-Means to the dataset
-kmeans = KMeans(n_clusters = 5, init = 'k-means++', random_state = 42)
+kmeans = KMeans(n_clusters = 5, init = 'k-means++', n_init = 10, random_state = 42)
 y_kmeans = kmeans.fit_predict(X)
 
 # Visualising the clusters
