@@ -25,7 +25,7 @@ results = list(rules)
 # create function to view results with meaningful values   
     # This function takes as argument your results list and return a tuple list with the format:
     # [(rh, lh, support, confidence, lift)] 
-    def inspect(results):
+def inspect(results):
         rh          = [tuple(result[2][0][0]) for result in results]
         lh          = [tuple(result[2][0][1]) for result in results]
         supports    = [result[1] for result in results]
@@ -33,5 +33,5 @@ results = list(rules)
         lifts       = [result[2][0][3] for result in results]
         return list(zip(rh, lh, supports, confidences, lifts))
     # this command creates a data frame to view
-    resultDataFrame=pd.DataFrame(inspect(results),
+resultDataFrame=pd.DataFrame(inspect(results),
                     columns=['rhs','lhs','support','confidence','lift'])
