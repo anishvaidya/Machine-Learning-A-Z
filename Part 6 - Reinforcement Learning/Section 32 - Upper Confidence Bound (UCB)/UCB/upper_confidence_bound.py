@@ -13,7 +13,7 @@ import math
 N = 10000
 d = 10
 ads_selected = []
-numbers_of_selections = [0] * d
+numbers_of_selections = [0] * d # Make a vector of size d containing 0s
 sums_of_rewards = [0] * d
 total_reward = 0
 for n in range(0, N):
@@ -25,7 +25,7 @@ for n in range(0, N):
             delta_i = math.sqrt(3/2 * math.log(n + 1) / numbers_of_selections[i])
             upper_bound = average_reward + delta_i
         else:
-            upper_bound = 1e400
+            upper_bound = 1e400 # 10 **400 (very large value)
         if upper_bound > max_upper_bound:
             max_upper_bound = upper_bound
             ad = i
@@ -35,9 +35,11 @@ for n in range(0, N):
     sums_of_rewards[ad] = sums_of_rewards[ad] + reward
     total_reward = total_reward + reward
 
-# Visualising the results
+# Visualising the results as Histogram
 plt.hist(ads_selected)
 plt.title('Histogram of ads selections')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
 plt.show()
+
+
